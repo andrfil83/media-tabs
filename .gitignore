@@ -1,0 +1,7 @@
+MediaTabs-webstore.zip
+TabPause-webstore.zip
+*.zip
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

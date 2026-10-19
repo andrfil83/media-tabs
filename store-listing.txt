@@ -1,0 +1,17 @@
+Media Tabs helps you control audio and video playing in your browser tabs without switching between tabs.
+
+FEATURES
+
+• Popup list of all tabs with media players (video and audio)
+• Open as a separate floating window and keep it on screen
+• Play / Pause each tab individually
+• Mute / Unmute each tab, with a volume slider
+• Seek −5 / +5 seconds, plus a progress bar to jump to a position
+• Pause all and Mute all bulk actions
+• Volume control for all tabs at once
+• Tabs stay in browser order (left to right)
+• Highlight of the last tab you controlled
+• Double-click a row to jump to that tab
+• Right-click the extension icon - play/pause the last highlighted media tab
+
+Pause or mute all tabs from one place, in a popup or a separate window.

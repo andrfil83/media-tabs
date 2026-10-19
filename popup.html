@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="popup.css">
+  <title>Media Tabs</title>
+</head>
+<body>
+  <div class="media-grid">
+    <div class="header-leading">
+      <button id="open-window" type="button" title="Open in separate window">⧉</button>
+      <h1>Media Tabs<button id="donate" type="button" title="Support on Ko-fi" aria-label="Donate on Ko-fi">♥</button></h1>
+    </div>
+    <div id="header-actions" class="header-actions controls-strip" hidden>
+      <button type="button" class="seek seek-back header-slot" tabindex="-1" aria-hidden="true" disabled>−5</button>
+      <button id="pause-all" class="bulk-action" type="button" title="Pause all">⏸</button>
+      <button type="button" class="seek seek-forward header-slot" tabindex="-1" aria-hidden="true" disabled>+5</button>
+      <div class="mute-wrap bulk-mute-wrap">
+        <button id="mute-all" class="bulk-action bulk-mute" type="button" title="Mute all">🔇</button>
+        <div class="volume-popover" role="group" aria-label="Volume for all tabs">
+          <span class="volume-slider-tooltip" hidden>100%</span>
+          <input id="mute-all-volume" class="volume-slider bulk-volume-slider" type="range" min="0" max="100" step="1" value="100" aria-label="Volume for all tabs">
+        </div>
+      </div>
+    </div>
+    <div class="tab-scroller">
+      <ul id="tab-list"></ul>
+    </div>
+    <p id="empty" hidden>No tabs with media players</p>
+  </div>
+  <div id="tab-context-menu" class="tab-context-menu" hidden>
+    <button type="button" data-action="like">Like!</button>
+    <button type="button" data-action="close">Close</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

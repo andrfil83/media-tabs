@@ -1,0 +1,35 @@
+Permission justifications for Chrome Web Store (Media Tabs)
+Based on: https://developer.chrome.com/docs/extensions/develop/concepts/declare-permissions
+          https://developer.chrome.com/docs/webstore/cws-dashboard-privacy
+============================================================
+
+Single purpose (recommended)
+----------------------------
+Control play, pause, mute, seek, and volume for HTML5 audio/video in open browser tabs from a popup list or a separate window, without requiring the user to switch to each tab.
+
+
+tabs
+----
+Required to read privileged Tab fields (title, favIconUrl, url, audible/muted state) and to manage tabs for the media list UI: query open tabs, show which ones have media, mute/unmute a tab, activate a tab on double-click, close a tab from the context menu, and remember the last media tab the user controlled. Without "tabs", titles and favicons needed for the list are unavailable.
+
+
+scripting
+---------
+Required to use chrome.scripting.executeScript so the extension can detect HTML5 <video>/<audio> elements and perform play, pause, seek, and volume changes in those tabs when the user uses the popup or floating window. This is programmatic injection (not a permanent content_scripts entry), which also requires matching host permissions.
+
+
+contextMenus
+------------
+Required to create one item on the extension action (toolbar icon) context menu: “Play / Pause last media tab”, so the user can toggle the last highlighted media tab without opening the popup.
+
+
+storage
+-------
+Required to use chrome.storage for extension-only state: session cache of media-tab UI status, the last interacted tab id, and the saved size/position of the optional floating media window. Data stays on the device and is not sent to remote servers.
+
+
+Host permission (<all_urls>)
+----------------------------
+Required together with "scripting" so executeScript can run on whichever sites currently have media. Audio/video can appear on any http/https page the user opens; limiting hosts would break the single purpose (control media on any tab in the list). The extension does not scrape page content, modify site UI, or collect browsing data beyond media playback control on tabs the user interacts with via Media Tabs.
+
+Note: Per Chrome docs, host permissions are needed for programmatic script injection. "activeTab" is not enough here because the popup controls multiple tabs and refreshes media state without a per-tab user gesture on each site.
